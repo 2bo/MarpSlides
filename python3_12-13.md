@@ -3,6 +3,32 @@
 <!-- $size: 16:9 -->
 
 # 12 Excelシート
+
+---
+# TL;DR
+## [openpyxl](https://openpyxl.readthedocs.io/en/stable/#)によるExcel操作まとめ
+
+```python
+'''
+Excelブックを読み込み、セルの値を更新して別名で保存する処理
+'''
+import openpyxl
+
+workbook = openpyxl.load_workbook('Book1.xlsx') #ブックの読込
+sheet = workbook.get_sheet_by_name('Sheet1')    #シートの読込
+cell = sheet.cell(row=1,column=1)               #セルの取得
+cell.value = 'Value'                            #値の更新
+
+workbook.save('Book1_new.xlsx')                 #ブックの保存
+```
+```python
+'''
+新規Excelブックの作成と保存
+'''
+workbook = openpyxl.Workbook()
+workbook.save('Book2.xlsx')
+```
+
 ---
 # 12.1 Excelブックとシートの読込
 * サードパーティーモジュール openpyxlを使用する
@@ -12,6 +38,7 @@ import openpyxl
 '''---Excelブックの操作---'''
 #Excelブックの読み込み
 workbook = openpyxl.load_workbook('hoge.xlsx') #Workbookオブジェクトを返す
+workbook2 = openpyxl.load_workbook('hoge.xlsx', data_only=True) #数式の結果を取得する場合
 
 #シート名の一覧取得
 workbook.get_sheet_names() #['Sheet1','Sheet2','Sheet3']
@@ -123,3 +150,54 @@ wb.remove_sheet(sheet) #引数はシート名ではなくWorksheetオブジェ�
 #シートの保存 
 wb.save('NewBook.xlsx')
 ```
+---
+
+# 12.7 フォント
+
+```python
+import openpyxl
+form openpyxl.styles import Font
+
+wb = openpyxl.Workbook()
+sheet = wb.get_sheet_by_name('Sheet1')
+#フォントオブジェクトの作成
+font = Font(name='Times New Roman',size=24, italic=True, bold=True)
+#フォントの設定
+sheet['A1'].font = font
+```
+Fontオブジェクトの主な引数
+| 引数 | 説明 |
+| - | - |
+| name | フォント名|
+| size | フォントサイズ(ポイント数)|
+| bold | Trueで太字|
+| italic| Trueで斜体 |
+
+---
+
+# 12.8 行と列の幅の変更
+
+```python
+'''~シートの取得まで省略~'''
+sheet.row_dimensions[1].height = 70 #1行目の高さを設定  設定範囲:0~409
+sheet.column_dimensions['B'].width = 20 #A列の幅を設定  設定範囲:0~255
+```
+---
+
+# 12.9 セルの結合/結合解除
+
+```python
+'''~シートの取得まで省略~'''
+#セルの結合
+sheet.merge_cells('A1:D5')    #結合範囲を文字列で指定する
+sheet['A1'].value = 'Content' #値を設定する場合は、左上のセルを指定する
+
+#セル結合の解除
+sheet.unmerge_cells('A1:D5')
+```
+
+---
+# 終わり
+
+
+
