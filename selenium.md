@@ -15,7 +15,7 @@ pip install webdriver
 ### Seleniumによるブラウザ操作の実行
 
 ```python
-# ChromeでWebサイトを開く
+# ChromeでWebサイトを開く
 >>> from selenium import webdriver
 >>> browser = webdriver.Chrome()
 >>> browser.get('http://inventwithpython.com')
