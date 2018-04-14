@@ -51,7 +51,7 @@ link = browser.find_element_by_link_text('Link')
 # Mouse Click
 link.click()
 ```
-* キー入力
+* キー入力
 ```python
 login_form = browser.find_element_by_id('login')
 # Input text
@@ -59,7 +59,7 @@ login_field.send_keys('hoge')
 # Excec submit
 login_field.submit()
 ```
-* 特殊キー入力
+* 特殊キー入力
 ```python
 html_elem = browser.find_element_by_tag_name('html')
 #↓
