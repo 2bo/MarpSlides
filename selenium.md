@@ -15,7 +15,7 @@ pip install webdriver
 ### Seleniumによるブラウザ操作の実行
 
 ```python
-# ChromeでWebサイトを開く
+# ChromeでWebサイトを開く
 >>> from selenium import webdriver
 >>> browser = webdriver.Chrome()
 >>> browser.get('http://inventwithpython.com')
@@ -68,7 +68,7 @@ html_elem.send_keys(Keys.Down)
 html_elem.send_keys(Keys.UP)
 #→
 html_elem.send_keys(Keys.RIGHT)
-#←
+#←
 html_elem.send_keys(Keys.LEFT)
 #Enter
 html_elem.send_keys(Keys.ENTER)
