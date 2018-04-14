@@ -30,7 +30,7 @@ pip install webdriver
 #class
 browser.find_element_by_class_name(name)
 #selector
-browser.find_element_by_css_selector(selector)
+browser.find_element_by_css_selector(selector)
 #id
 browser.find_element_by_id(id)
 #link text
