@@ -70,7 +70,7 @@ html_elem.send_keys(Keys.UP)
 html_elem.send_keys(Keys.RIGHT)
 #←
 html_elem.send_keys(Keys.LEFT)
-#Enter
+#Enter
 html_elem.send_keys(Keys.ENTER)
 #Home
 html_elem.send_keys(Keys.HOME)
